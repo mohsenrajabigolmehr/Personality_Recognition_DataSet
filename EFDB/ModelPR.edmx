@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PersonalityRecognitionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AllWordsTrainResults">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Features" Type="nvarchar(max)" />
+          <Property Name="Target" Type="nvarchar(max)" />
+          <Property Name="Predict" Type="nvarchar(max)" />
+          <Property Name="ALLWords" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="insta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="255" />
+          <Property Name="username" Type="nvarchar" MaxLength="255" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="NormalWords" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="255" />
+          <Property Name="age" Type="float" />
+          <Property Name="education" Type="nvarchar" MaxLength="255" />
+          <Property Name="marriage" Type="nvarchar" MaxLength="255" />
+          <Property Name="job" Type="nvarchar" MaxLength="255" />
+          <Property Name="insta" Type="nvarchar" MaxLength="255" />
+          <Property Name="createTime" Type="nvarchar" MaxLength="255" />
+          <Property Name="FinalScore" Type="nvarchar" MaxLength="255" />
+          <Property Name="Neurosis_Score" Type="float" />
+          <Property Name="Neurosis_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExtroversionIntroversion_Score" Type="float" />
+          <Property Name="ExtroversionIntroversion_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="PassionForNewExperiences_Score" Type="float" />
+          <Property Name="PassionForNewExperiences_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Agreeableness_Score" Type="float" />
+          <Property Name="Agreeableness_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Responsible_Score" Type="float" />
+          <Property Name="Responsible_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="insta_personality" Type="nvarchar" MaxLength="255" />
+          <Property Name="Neurosis" Type="int" />
+          <Property Name="Responsible" Type="int" />
+          <Property Name="Agreeableness" Type="int" />
+          <Property Name="PassionForNewExperiences" Type="int" />
+          <Property Name="ExtroversionIntroversion" Type="int" />
+          <Property Name="Neurosis1" Type="int" />
+          <Property Name="Neurosis2" Type="int" />
+          <Property Name="Neurosis3" Type="int" />
+          <Property Name="Responsible1" Type="bit" />
+          <Property Name="Responsible2" Type="bit" />
+          <Property Name="Responsible3" Type="bit" />
+          <Property Name="Agreeableness1" Type="bit" />
+          <Property Name="Agreeableness2" Type="bit" />
+          <Property Name="Agreeableness3" Type="bit" />
+          <Property Name="PassionForNewExperiences1" Type="bit" />
+          <Property Name="PassionForNewExperiences2" Type="bit" />
+          <Property Name="PassionForNewExperiences3" Type="bit" />
+          <Property Name="ExtroversionIntroversion1" Type="bit" />
+          <Property Name="ExtroversionIntroversion2" Type="bit" />
+          <Property Name="ExtroversionIntroversion3" Type="bit" />
+        </EntityType>
+        <EntityType Name="Words">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TextWord" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TextWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PersonalityRecognitionModelStoreContainer">
+          <EntitySet Name="AllWordsTrainResults" EntityType="Self.AllWordsTrainResults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="insta" EntityType="Self.insta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Words" EntityType="Self.Words" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PersonalityRecognitionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PersonalityRecognitionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="instas" EntityType="PersonalityRecognitionModel.insta" />
+          <EntitySet Name="users" EntityType="PersonalityRecognitionModel.user" />
+          <EntitySet Name="Words" EntityType="PersonalityRecognitionModel.Word" />
+          <EntitySet Name="AllWordsTrainResults" EntityType="PersonalityRecognitionModel.AllWordsTrainResult" />
+        </EntityContainer>
+        <EntityType Name="insta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NormalWords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="age" Type="Double" />
+          <Property Name="education" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="marriage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="job" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="insta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="createTime" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FinalScore" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Neurosis_Score" Type="Double" />
+          <Property Name="Neurosis_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ExtroversionIntroversion_Score" Type="Double" />
+          <Property Name="ExtroversionIntroversion_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PassionForNewExperiences_Score" Type="Double" />
+          <Property Name="PassionForNewExperiences_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Agreeableness_Score" Type="Double" />
+          <Property Name="Agreeableness_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Responsible_Score" Type="Double" />
+          <Property Name="Responsible_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="insta_personality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Neurosis" Type="Int32" />
+          <Property Name="Responsible" Type="Int32" />
+          <Property Name="Agreeableness" Type="Int32" />
+          <Property Name="PassionForNewExperiences" Type="Int32" />
+          <Property Name="ExtroversionIntroversion" Type="Int32" />
+          <Property Name="Neurosis1" Type="Int32" />
+          <Property Name="Neurosis2" Type="Int32" />
+          <Property Name="Neurosis3" Type="Int32" />
+          <Property Name="Responsible1" Type="Boolean" />
+          <Property Name="Responsible2" Type="Boolean" />
+          <Property Name="Responsible3" Type="Boolean" />
+          <Property Name="Agreeableness1" Type="Boolean" />
+          <Property Name="Agreeableness2" Type="Boolean" />
+          <Property Name="Agreeableness3" Type="Boolean" />
+          <Property Name="PassionForNewExperiences1" Type="Boolean" />
+          <Property Name="PassionForNewExperiences2" Type="Boolean" />
+          <Property Name="PassionForNewExperiences3" Type="Boolean" />
+          <Property Name="ExtroversionIntroversion1" Type="Boolean" />
+          <Property Name="ExtroversionIntroversion2" Type="Boolean" />
+          <Property Name="ExtroversionIntroversion3" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Word">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TextWord" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TextWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AllWordsTrainResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Target" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Predict" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ALLWords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PersonalityRecognitionModelStoreContainer" CdmEntityContainer="PersonalityRecognitionEntities">
+          <EntitySetMapping Name="instas">
+            <EntityTypeMapping TypeName="PersonalityRecognitionModel.insta">
+              <MappingFragment StoreEntitySet="insta">
+                <ScalarProperty Name="NormalWords" ColumnName="NormalWords" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="PersonalityRecognitionModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="ExtroversionIntroversion3" ColumnName="ExtroversionIntroversion3" />
+                <ScalarProperty Name="ExtroversionIntroversion2" ColumnName="ExtroversionIntroversion2" />
+                <ScalarProperty Name="ExtroversionIntroversion1" ColumnName="ExtroversionIntroversion1" />
+                <ScalarProperty Name="PassionForNewExperiences3" ColumnName="PassionForNewExperiences3" />
+                <ScalarProperty Name="PassionForNewExperiences2" ColumnName="PassionForNewExperiences2" />
+                <ScalarProperty Name="PassionForNewExperiences1" ColumnName="PassionForNewExperiences1" />
+                <ScalarProperty Name="Agreeableness3" ColumnName="Agreeableness3" />
+                <ScalarProperty Name="Agreeableness2" ColumnName="Agreeableness2" />
+                <ScalarProperty Name="Agreeableness1" ColumnName="Agreeableness1" />
+                <ScalarProperty Name="Responsible3" ColumnName="Responsible3" />
+                <ScalarProperty Name="Responsible2" ColumnName="Responsible2" />
+                <ScalarProperty Name="Responsible1" ColumnName="Responsible1" />
+                <ScalarProperty Name="Neurosis3" ColumnName="Neurosis3" />
+                <ScalarProperty Name="Neurosis2" ColumnName="Neurosis2" />
+                <ScalarProperty Name="Neurosis1" ColumnName="Neurosis1" />
+                <ScalarProperty Name="ExtroversionIntroversion" ColumnName="ExtroversionIntroversion" />
+                <ScalarProperty Name="PassionForNewExperiences" ColumnName="PassionForNewExperiences" />
+                <ScalarProperty Name="Agreeableness" ColumnName="Agreeableness" />
+                <ScalarProperty Name="Responsible" ColumnName="Responsible" />
+                <ScalarProperty Name="Neurosis" ColumnName="Neurosis" />
+                <ScalarProperty Name="insta_personality" ColumnName="insta_personality" />
+                <ScalarProperty Name="Responsible_Name" ColumnName="Responsible_Name" />
+                <ScalarProperty Name="Responsible_Score" ColumnName="Responsible_Score" />
+                <ScalarProperty Name="Agreeableness_Name" ColumnName="Agreeableness_Name" />
+                <ScalarProperty Name="Agreeableness_Score" ColumnName="Agreeableness_Score" />
+                <ScalarProperty Name="PassionForNewExperiences_Name" ColumnName="PassionForNewExperiences_Name" />
+                <ScalarProperty Name="PassionForNewExperiences_Score" ColumnName="PassionForNewExperiences_Score" />
+                <ScalarProperty Name="ExtroversionIntroversion_Name" ColumnName="ExtroversionIntroversion_Name" />
+                <ScalarProperty Name="ExtroversionIntroversion_Score" ColumnName="ExtroversionIntroversion_Score" />
+                <ScalarProperty Name="Neurosis_Name" ColumnName="Neurosis_Name" />
+                <ScalarProperty Name="Neurosis_Score" ColumnName="Neurosis_Score" />
+                <ScalarProperty Name="FinalScore" ColumnName="FinalScore" />
+                <ScalarProperty Name="createTime" ColumnName="createTime" />
+                <ScalarProperty Name="insta" ColumnName="insta" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="marriage" ColumnName="marriage" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Words">
+            <EntityTypeMapping TypeName="PersonalityRecognitionModel.Word">
+              <MappingFragment StoreEntitySet="Words">
+                <ScalarProperty Name="TextWord" ColumnName="TextWord" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllWordsTrainResults">
+            <EntityTypeMapping TypeName="PersonalityRecognitionModel.AllWordsTrainResult">
+              <MappingFragment StoreEntitySet="AllWordsTrainResults">
+                <ScalarProperty Name="ALLWords" ColumnName="ALLWords" />
+                <ScalarProperty Name="Predict" ColumnName="Predict" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Features" ColumnName="Features" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
